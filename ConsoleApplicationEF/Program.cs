@@ -23,15 +23,15 @@ namespace ConsoleApplicationEF
             Console.WriteLine("After Delete");
             ReadData(string.Empty);
             
-            //var emp = (from empl in context.EmployeeDetails
-            //           group empl by empl.Emp_MgrId into grp_ems
-            //           where grp_ems.Count() > 1
-            //           select grp_ems);
+            var emp = (from empl in context.EmployeeDetails
+                       group empl by empl.Emp_MgrId into grp_ems
+                       where grp_ems.Count() > 1
+                       select grp_ems);
 
-            var emp = context.EmployeeDetails.
-                            GroupBy(item => item.Emp_MgrId).
-                            Where(group => group.Count() > 1).
-                            Select(group => group);
+            //var emp = context.EmployeeDetails.
+            //                GroupBy(item => item.Emp_MgrId).
+            //                Where(group => group.Count() > 1).
+            //                Select(group => group);
 
             foreach (var groupItem in emp)
             {
